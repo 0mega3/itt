@@ -115,11 +115,12 @@ Ytsuken
 Naming Conventions
 
 - `linear` → `li`
+- `snake` → `sn`
 - `spiral_in` → `si` (Spiral In)
 - `spiral_out` → `so` (Spiral Out)
-- `snake` → `sn`
+- `round` → `rd`
 
-For direction-based strategies (Linear):
+**For direction-based strategies (Linear):**
 
 `<type>_<direction>`
 
@@ -127,134 +128,207 @@ Where
 
 - `<type>`: `li`
 - `<direction>` is a combination:
-`lr_tb`, `lr_bt`, `rl_tb`, `rl_bt`, `tb_lr`, `tb_rl`, `bt_lr`, `bt_rl`.
+  - `lr_tb` (left-right, top-bottom)
+  - `lr_bt` (left-right, bottom-top)
+  - `rl_tb` (right-left, top-bottom)
+  - `rl_bt` (right-left, bottom-top)
+  - `tb_lr` (top-bottom, left-right)
+  - `tb_rl` (top-bottom, right-left)
+  - `bt_lr` (bottom-top, left-right)
+  - `bt_rl` (bottom-top, right-left)
 
 *Example:* `li_lr_tb`, `li_tb_lr`
 
-For start-point-based strategies (Spiral, Snake):
+**For start-point-based strategies (Snake, Spiral, Round):**
 
 `<type>_<direction>_<start>`
 
 Where
 
-- `<type>`: `si`, `so`, `sn`
-- `<direction>`: `cw` (clockwise), `ccw` (counter-clockwise),
-`tb` (top-bottom), `bt` (bottom-top)
-- `<start>`: `tl` (top-left), `tr` (top-right), `bl` (bottom-left),
-`br` (bottom-right), `hl` (home-left), `hr` (home-right)
+- `<type>`:
+  - `sn`
+  - `si`, `so`
+  - `rd`
+- `<direction>`:
+  - `lr` (left-right)
+  - `rl` (right-left)
+  - `tb` (top-bottom)
+  - `bt` (bottom-top)
+  - `cw` (clockwise)
+  - `ccw` (counter-clockwise)
+- `<start>`:
+  - `tlm` (top leftmost)
+  - `trm` (top rightmost)
+  - `blm` (bottom leftmost)
+  - `brm` (bottom rightmost)
+  - `hlm` (home leftmost)
+  - `hrm` (home rightmost)
 
-*Example:* `sn_tb_tl`, `si_cw_tr`
+For `rd` (round) traversals only, `<start>` can also be any specific key
+(e.g., `E` for `zone_x`, `O` for `zone_z`) to define a custom starting point
+on the perimeter.
+
+*Example:* `sn_tb_tlm`, `si_cw_trm`, `rd_cw_e`, `rd_ccw_o`
 
 1. Linear Traversals
 
-    Strategies that follow a predefined linear sequence:
-    - `li_lr_tb` (Left-to-Right, Top-to-Bottom):
+    Strategies that follow a predefined **linear** sequence:
+    - `li_lr_tb` (Left-Right, Top-Bottom):
     Traverse each row left to right, move to next row top to bottom.
 
-        *Example (QWERTY, Multi-Row):* `Q → ... → P → A → ... → ; → Z → ... → /`
+        *Example (QWERTY, Multi-Row, full):*
+        `Q → ... → P → A → ... → ; → Z → ... → /`
 
-        *Example (QWERTY, Single-Row):* `A → S → D → F → G → H → J → K → L → ;`
+        *Example (QWERTY, Single-Row, full):*
+        `A → S → D → F → G → H → J → K → L → ;`
 
-    - `li_lr_bt` (Left-to-Right, Bottom-to-Top):
+    - `li_lr_bt` (Left-Right, Bottom-Top):
     Traverse each row left to right, move to next row bottom to top.
 
-        *Example (QWERTY):* `Z → ... → / → A → ... → ; → Q → ... → P`
+        *Example (QWERTY, full):* `Z → ... → / → A → ... → ; → Q → ... → P`
 
-    - `li_rl_tb` (Right-to-Left, Top-to-Bottom):
+    - `li_rl_tb` (Right-Left, Top-Bottom):
     Traverse each row right to left, move to next row top to bottom.
 
-        *Example (QWERTY, Multi-Row):* `P → ... → Q → ; → ... → A → / → ... → Z`
+        *Example (QWERTY, Multi-Row, full):*
+        `P → ... → Q → ; → ... → A → / → ... → Z`
 
-        *Example (QWERTY, Single-Row):* `; → L → K → J → H → G → F → D → S → A`
+        *Example (QWERTY, Single-Row, full):*
+        `; → L → K → J → H → G → F → D → S → A`
 
-    - `li_rl_bt` (Right-to-Left, Bottom-to-Top):
+    - `li_rl_bt` (Right-Left, Bottom-Top):
     Traverse each row right to left, move to next row bottom to top.
 
-        *Example (QWERTY):* `/ → ... → Z → ; → ... → A → P → ... → Q`
+        *Example (QWERTY, full):* `/ → ... → Z → ; → ... → A → P → ... → Q`
 
-    - `li_tb_lr` (Top-to-Bottom, Left-to-Right):
+    - `li_tb_lr` (Top-Bottom, Left-Right):
     Traverse each column top to bottom, move to next column left to right.
 
-        *Example (QWERTY):* `Q → A → Z → W → S → X → ... → P → ; → /`
+        *Example (QWERTY, full):* `Q → A → Z → W → S → X → ... → P → ; → /`
 
-    - `li_tb_rl` (Top-to-Bottom, Right-to-Left):
+    - `li_tb_rl` (Top-Bottom, Right-Left):
     Traverse each column top to bottom, move to next column right to left.
 
-        *Example (QWERTY):* `P → ; → / → O → L → . → ... → Q → A → Z`
+        *Example (QWERTY, full):* `P → ; → / → O → L → . → ... → Q → A → Z`
 
-    - `li_bt_lr` (Bottom-to-Top, Left-to-Right):
+    - `li_bt_lr` (Bottom-Top, Left-Right):
     Traverse each column bottom to top, move to next column left to right.
 
-        *Example (QWERTY):* `Z → A → Q → X → S → W → ... → / → ; → P`
+        *Example (QWERTY, full):* `Z → A → Q → X → S → W → ... → / → ; → P`
 
-    - `li_bt_rl` (Bottom-to-Top, Right-to-Left):
+    - `li_bt_rl` (Bottom-Top, Right-Left):
     Traverse each column bottom to top, move to next column right to left.
 
-        *Example (QWERTY):* `/ → ; → P → . → L → O → ... → Z → A → Q`
+        *Example (QWERTY, full):* `/ → ; → P → . → L → O → ... → Z → A → Q`
 
-    > Note: For Single-Row patterns, the `li_lr_tb` and `li_rl_tb` traversals
-    > are simplified to linear left-right and right-left movement
-    > (the `_tb` part is ignored).
+    > **Note:** For Single-Row patterns, the `li_lr_tb` and `li_rl_tb`
+    > traversals are simplified to linear left-right and right-left
+    > movement (the `_tb` part is ignored).
 
-2. Spiral Traversals
+2. Snake Traversals
 
-    Strategies that traverse keys in a continuous spiral motion:
-    - `si_cw_tl` (Spiral In, Clockwise, Top-Left):
+    Strategies that traverse keys in a **snake** (zigzag) pattern,
+    row by row or column by column:
+    - `sn_tb_tlm` (Snake, Top-Bottom, Top-Left):
+    Snake top to bottom, starting from top-left.
+
+        *Example (QWERTY, full):* `Q → ... → P → ; → ... → A → Z → ... → /`
+
+    - `sn_tb_trm` (Snake, Top-Bottom, Top-Right):
+    Snake top to bottom, starting from top-right.
+
+        *Example (QWERTY, full):* `P → ... → Q → A → ... → ; → / → ... →  Z`
+
+    - `sn_bt_blm` (Snake, Bottom-Top, Bottom-Left):
+    Snake bottom to top, starting from bottom-left.
+
+        *Example (QWERTY, full):* `Z → ... → / → ; → ... → A → Q → ... → P`
+
+    - `sn_bt_brm` (Snake, Bottom-Top, Bottom-Right):
+    Snake bottom to top, starting from bottom-right.
+
+        *Example (QWERTY, full):* `/ → ... → Z → A → ... → ; → P → ... → Q`
+
+    - `sn_lr_tlm` (Snake, Left-Right, Top-Left):
+    Snake left to right, starting from top-left.
+
+        *Example (QWERTY, full):* `Q → A → Z → X → S → W → ... → / → ; → P`
+
+    - `sn_lr_blm` (Snake, Left-Right, Bottom-Left):
+    Snake left to right, starting from bottom-left.
+
+        *Example (QWERTY, full):* `Z → A → Q → W → S → X → ... → P → ; → /`
+
+    - `sn_rl_trm` (Snake, Right-Left, Top-Right):
+    Snake right to left, starting from top-right.
+
+        *Example (QWERTY, full):* `P → ; → / → . → L → O → ... → Z → A → Q`
+
+    - `sn_rl_brm` (Snake, Right-Left, Bottom-Right):
+    Snake right to left, starting from bottom-right.
+
+        *Example (QWERTY, full):* `/ → ; → P → O → L → . → ... → Q → A → Z`
+
+3. Spiral Traversals
+
+    Strategies that traverse keys in a continuous **spiral** motion,
+    inward or outward:
+    - `si_cw_tlm` (Spiral In, Clockwise, Top-Left):
     Spiral *inward* clockwise, starting from top-left.
 
-        *Example (QWERTY):* `Q → ... → P → ; →  / → ... → Z → A → ... → L`
+        *Example (QWERTY, full):* `Q → ... → P → ; →  / → ... → Z → A → ... → L`
 
-    - `si_cw_br` (Spiral In, Clockwise, Bottom-Right):
+    - `si_cw_brm` (Spiral In, Clockwise, Bottom-Right):
     Spiral *inward* clockwise, starting from bottom-right.
 
-        *Example (QWERTY):* `/ → ... → Z → A → Q → ... → P → ; → ... → S`
+        *Example (QWERTY, full):* `/ → ... → Z → A → Q → ... → P → ; → ... → S`
 
-    - `si_ccw_tr` (Spiral In, Counter-Clockwise, Top-Right):
+    - `si_ccw_trm` (Spiral In, Counter-Clockwise, Top-Right):
     Spiral *inward* counter-clockwise, starting from top-right.
 
-        *Example (QWERTY):* `P → ... → Q → A → Z → ... → / → ; → ... → S`
+        *Example (QWERTY, full):* `P → ... → Q → A → Z → ... → / → ; → ... → S`
 
-    - `si_ccw_bl` (Spiral In, Counter-Clockwise, Bottom-Left):
+    - `si_ccw_blm` (Spiral In, Counter-Clockwise, Bottom-Left):
     Spiral *inward* counter-clockwise, starting from bottom-left.
 
-        *Example (QWERTY):* `Z → ... → / → ; → P → ... → Q → A → ... → L`
+        *Example (QWERTY, full):* `Z → ... → / → ; → P → ... → Q → A → ... → L`
 
-    - `so_cw_hr` (Spiral Out, Clockwise, Home-Right):
+    - `so_cw_hrm` (Spiral Out, Clockwise, Home-Right):
     Spiral *outward* clockwise, starting from home-right.
 
-        *Example (QWERTY):* `L → ... → A → Q → ... → P → ; → / → ... → Z`
+        *Example (QWERTY, full):* `L → ... → A → Q → ... → P → ; → / → ... → Z`
 
-    - `so_ccw_hl` (Spiral Out, Counter-Clockwise, Home-Left):
+    - `so_ccw_hlm` (Spiral Out, Counter-Clockwise, Home-Left):
     Spiral *outward* counter-clockwise, starting from home-left.
 
-        *Example (QWERTY):* `S → ... → ; → P → ... → Q → A → Z → ... → /`
+        *Example (QWERTY, full):* `S → ... → ; → P → ... → Q → A → Z → ... → /`
 
-3. Snake Traversals
+4. Round Traversals
 
-    Strategies that traverse keys in a zigzag pattern row by row:
-    - `sn_tb_tl` (Snake, Top-Bottom, Top-Left):
-    Zigzag top to bottom, starting from top-left.
+    Strategies that traverse keys along the perimeter of a pattern
+    in a **round** motion:
+    - `rd_cw_tlm` (Round Clockwise, Top-Left):
+    Traverse the perimeter clockwise, starting from the
+    top-left key of the zone.
 
-        *Example (QWERTY):* `Q → ... → P → ; → ... → A → Z → ... → /`
+        *Example (QWERTY, zone_x):* `Q → ... → R → F → V → ... → Z → A → Q`
 
-    - `sn_tb_tr` (Snake, Top-Bottom, Top-Right):
-    Zigzag top to bottom, starting from top-right.
+    - `rd_ccw_o` (Round Counter-Clockwise, Special Key `O`):
+    Traverse the perimeter counter-clockwise, starting from the
+    special key `O` of the zone.
 
-        *Example (QWERTY):* `P → ... → Q → A → ... → ; → / → ... →  Z`
+        *Example (QWERTY, zone_z):* `O → I → U → J → M → ... → / → ; → P → O`
 
-    - `sn_bt_bl` (Snake, Bottom-Top, Bottom-Left):
-    Zigzag bottom to top, starting from bottom-left.
+    > **Note:** The combination of pattern types and start points
+    > allows for a wide variety of round traversals. For example,
+    > the perimeter of the `zone_x` pattern includes keys
+    > `q, w, e, r, f, v, c, x, z, a`. This allows for 10 unique
+    > starting points, each with two directions (`cw`, `ccw`),
+    > resulting in 20 variations for just one zone.
 
-        *Example (QWERTY):* `Z → ... → / → ; → ... → A → Q → ... → P`
+5. Random Traversals
 
-    - `sn_bt_br` (Snake, Bottom-Top, Bottom-Right):
-    Zigzag bottom to top, starting from bottom-right.
-
-        *Example (QWERTY):* `/ → ... → Z → A → ... → ; → P → ... → Q`
-
-4. Random Traversals
-
-    - `random`: Keys are selected randomly from the pattern.
+    - `random`: Keys are selected **randomly** from the pattern.
     Repetition is possible.
 
 ## Usage
