@@ -96,6 +96,37 @@ Ytsuken
 └────┴───┴───┴───┴──────────────────┴───┴────┴────┴────┴────┘
 ```
 
+#### Magic Keys (`A`, `M`)
+
+The keys `A` and `M` form a **cognitive bridge** between
+QWERTY and Dvorak layouts. To mitigate cognitive load and
+prevent muscle memory interference during layout switching,
+ITT leverages these **magic keys** as stable **anchor points**.
+They share the same physical position (masks `x21` and `z31`)
+across both layouts. This provides a consistent reference for
+your spatial memory, making the transition between layouts
+safer and more intuitive by preventing a complete perceptual
+breakdown.
+
+#### Mnemonic Anchors (Associative Bridges)
+
+**Core Concept:** For each key group (defined by its mask
+and symbols), a primary universal association (abbr. assoc)
+is provided, along with a set of alternative associations
+for different contexts or preferences. The goal is to create
+a chain of associative links that together form a coherent
+mnemonic context.
+
+- `<mask>`(`<key group>`)
+  - Primary: `<primary assoc>`
+  - Alternatives: [`<alternative assoc_1>`, ...]
+- Mnemonic context: `<mask chain>` : `<assoc chain>`
+
+Where
+
+- `<mask chain>`: `<mask_1>` → `<mask_2>` → ... → `<mask_n>`
+- `<assoc chain>`: `<assoc_1>` → `<assoc_2>` → ... → `<assoc_n>`
+
 ### Patterns
 
 1. Multi-Row Patterns
