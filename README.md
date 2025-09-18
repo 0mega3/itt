@@ -117,15 +117,133 @@ for different contexts or preferences. The goal is to create
 a chain of associative links that together form a coherent
 mnemonic context.
 
-- `<mask>`(`<key group>`)
-  - Primary: `<primary assoc>`
-  - Alternatives: [`<alternative assoc_1>`, ...]
-- Mnemonic context: `<mask chain>` : `<assoc chain>`
+- `<combo_id>`: `<mask chain>`
+  - `<mask>`(`<key group>`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - ...
+  - MNEMONIC CONTEXT: `<assoc chain>`
 
 Where
 
-- `<mask chain>`: `<mask_1>` → `<mask_2>` → ... → `<mask_n>`
-- `<assoc chain>`: `<assoc_1>` → `<assoc_2>` → ... → `<assoc_n>`
+- `<combo_id>`      : `combo_<zone><start_row>-<end_row><column>`
+- `<mask>`          : A spatial key group identifier (e.g., `xij`, `yij`)
+- `<key group>`     : The physical symbols on the key(s) for the layout(s)
+- `<mask chain>`    : `<mask_1>` → `<mask_2>` → ... → `<mask_n>`
+- `<assoc chain>`   : `<assoc_1>` → `<assoc_2>` → ... → `<assoc_n>`
+
+- combo_x1-31
+  - `x11`(`Q` `single quote`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - `x21`(`A` `A`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - `x31`(`Z` `semicolon`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - MNEMONIC CONTEXT: `<assoc chain>`
+- combo_x1-32
+  - `x12`(`W` `comma`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - `x22`(`S` `O`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - `x32`(`X` `Q`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - MNEMONIC CONTEXT: `<assoc chain>`
+- combo_x1-33
+  - `x13`(`E` `dot`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - `x23`(`D` `E`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - `x33`(`C` `J`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - MNEMONIC CONTEXT: `<assoc chain>`
+- combo_x1-34
+  - `x14`(`R` `P`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - `x24`(`F` `U`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - `x34`(`V` `K`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - MNEMONIC CONTEXT: `<assoc chain>`
+
+- combo_y1-31
+  - `y11`(`T` `Y`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - `y21`(`G` `I`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - `y31`(`B` `X`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - MNEMONIC CONTEXT: `<assoc chain>`
+- combo_y1-32
+  - `y12`(`Y` `F`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - `y22`(`H` `D`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - `y32`(`N` `B`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - MNEMONIC CONTEXT: `<assoc chain>`
+
+- combo_z1-31
+  - `z11`(`U` `G`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - `z21`(`J` `H`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - `z31`(`M` `M`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - MNEMONIC CONTEXT: `<assoc chain>`
+- combo_z1-32
+  - `z12`(`I` `C`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - `z22`(`K` `T`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - `z32`(`comma` `W`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - MNEMONIC CONTEXT: `<assoc chain>`
+- combo_z1-33
+  - `z13`(`O` `R`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - `z23`(`L` `N`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - `z33`(`dot` `V`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - MNEMONIC CONTEXT: `<assoc chain>`
+- combo_z1-34
+  - `z14`(`P` `L`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - `z24`(`semicolon` `S`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - `z34`(`slash` `Z`)
+    - Primary: `<primary assoc>`
+    - Alternatives: [`<alternative assoc_1>`, ...]
+  - MNEMONIC CONTEXT: `<assoc chain>`
 
 ### Patterns
 
@@ -399,7 +517,7 @@ Usage:
 
 Arguments:
   -k, --keyboard-layout <name>   Keyboard layout (qwerty, dvorak, ytsuken, mix)
-  -m, --mask <name>              Coordinate mask (xyz, lcr)
+  -m, --mask <name>              Mask template (xyz, lcr) for target display
   -p, --pattern <name>           Practice pattern (full, home_row, vowels, etc.)
   -t, --traversal <name>         Traversal strategy (lr_tb, random, etc.)
   -c, --countdown-timer <sec>    Max time allowed to press each key (seconds)
