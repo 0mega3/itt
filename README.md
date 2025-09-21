@@ -546,3 +546,12 @@ Target: x21 (A) > Input: ... > Time: 4.3s
 [Mix/xyz] Pattern: zone_x > Traversal: random
 Target: [dv] x13 > Input: ... > Time: 7.0s
 ```
+
+## License
+
+`itt` was created by Denis Khorkin. It is licensed under the terms
+of the BSD-3-Clause license.
+
+## Credits
+
+- Denis Khorkin
