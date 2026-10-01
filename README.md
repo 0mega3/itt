@@ -108,6 +108,25 @@ your spatial memory, making the transition between layouts
 safer and more intuitive by preventing a complete perceptual
 breakdown.
 
+#### Mnemonic Rules
+
+A **Mnemonic Rule** defines the order in which letters are extracted
+from layouts to build a **Mnemonic Anchor**.
+
+- **Qworak Rule**: Qwerty-Dvorak Order → Mnemonic Anchor.
+  - First letter from **QWERTY**, second from **Dvorak**.
+  - Example: `I` (QWERTY) + `C` (Dvorak) → `IC` → **Ion Cannon**.
+
+- **Dverty Rule**: Dvorak-Qwerty Order → Mnemonic Anchor.
+  - First letter from **Dvorak**, second from **QWERTY**.
+  - Example: `C` (Dvorak) + `I` (QWERTY) → `CI` → **different association**.
+
+- **Unordered Rule**: No Order → Mnemonic Anchor.
+  - Order is not defined; any permutation of letters from the key applies.
+  - **2 layouts**: `I` (QWERTY) + `C` (Dvorak) → `IC` or `CI` → same association.
+  - **3 layouts**: `I` (QWERTY) + `C` (Dvorak) + `U` (Colemak) →
+  `CIU`, `CUI`, `ICU`, `IUC`, `UCI`, `UIC` → same association.
+
 #### Mnemonic Anchors (Associative Bridges)
 
 **Core Concept:** For each key group (defined by its mask
@@ -115,7 +134,7 @@ and symbols), a primary universal association (abbr. assoc)
 is provided, along with a set of alternative associations
 for different contexts or preferences. The goal is to create
 a chain of associative links that together form a coherent
-mnemonic context.
+**mnemonic context**.
 
 - `<combo_id>`: `<mask chain>`
   - `<mask>`(`<key group>`)
@@ -244,6 +263,51 @@ Where
     - Primary: `<primary assoc>`
     - Alternatives: [`<alternative assoc_1>`, ...]
   - MNEMONIC CONTEXT: `<assoc chain>`
+
+#### Example: Qworak Mnemonic Anchors (No Mnemonic Context)
+
+For example, if `ty` → thank you, `gi` → gift, and `bx` → box were used,
+the mnemonic context would be *"thank you for the gift box"*.
+Instead, the following anchors are used: `ty` → **typewriter**,
+`gi` → **G.I. Joe**, `bx` → **box**.
+
+![assoc](https://github.com/0mega3/itt/raw/main/doc/src/assets/assoc.png)
+
+- x11 = `q'"` = [quotes, 69, yin-yang]
+- x12 = `w,<` = [www ~ welcome ~ open, waiting ~ pause ~ comma]
+- x13 = `e.>` = [end, dit (Morse code), dot ~ stop ~ close]
+- x14 = `rp`  = [red pill]
+- y11 = `ty`  = [typewriter]
+- y12 = `yf`  = [Yoda force]
+- z11 = `ug`  = [upgrade]
+- z12 = `ic`  = [ion cannon, Intel Core]
+- z13 = `or`  = [logical disjunction (Venn diagram)]
+- z14 = `pl`  = [plutonium]
+
+- x21 = `aa`  = [AA battery]
+- x22 = `so`  = [Sonic, Stack Overflow]
+- x23 = `de`  = [DeLorean, debug]
+- x24 = `fu`  = [f**k you, Futurama]
+- y21 = `gi`  = [G.I. Joe]
+- y22 = `hd`  = [Harley-Davidson, Humpty Dumpty]
+- z21 = `jh`  = [Jekyll & Hyde]
+- z22 = `kt`  = [knight]
+- z23 = `ln`  = [natural logarithm, line]
+- z24 = `;:s` = [next ~ semicolon, sector]
+
+- x31 = `z;:` = [zone, next ~ semicolon]
+- x32 = `xq`  = [exit, quit]
+- x33 = `cj`  = [Captain Jack Sparrow, conjunction]
+- x34 = `vk`  = [virtual key]
+- y31 = `bx`  = [box]
+- y32 = `nb`  = [nota bene, New Balance]
+- z31 = `mm`  = [Mickey Mouse, M&M's]
+- z32 = `,<w` = [waiting ~ pause ~ comma, www ~ welcome ~ open]
+- z33 = `.>v` = [dot ~ stop ~ close, V for Vendetta ~ resistance ~ Guy Fawkes mask]
+- z34 = `/?z` = [/ zero = error]
+
+> **Note:** Permuted key groups (same masks, different order):
+> `x12` ~ `z32`, `z24` ~ `x31`.
 
 ### Patterns
 
